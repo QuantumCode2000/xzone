@@ -1,14 +1,28 @@
 import "./App.css";
-import Header from "./layout/Header/Header";
+
+import MianLayout from "./layout/MianLayout";
+
 import Home from "./pages/Home/Home";
-import Footer from "./components/Footer/Footer";
+import Contact from "./pages/Contact/Contact";
+import Products from "./pages/Products/Products";
+import Cart from "./pages/Cart/Cart";
+import { StoreProvider } from "./context/StoreContext";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <Home />
-      <Footer />
-    </div>
+    <StoreProvider>
+      <Router>
+        <MianLayout>
+          <Routes>
+            <Route index path="/" exact element={<Home />} />
+            <Route path="/product" exact element={<Products />} />
+
+            <Route path="/contact" exact element={<Contact />} />
+            <Route path="/cart" exact element={<Cart />} />
+          </Routes>
+        </MianLayout>
+      </Router>
+    </StoreProvider>
   );
 }
 

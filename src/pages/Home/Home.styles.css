@@ -1,4 +1,39 @@
+:root {
+  --font-size: 10px;
+}
+
 .home {
   height: 100vh;
   background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.home .home-container {
+  padding-right: 15rem;
+  padding-left: 15rem;
+}
+
+.home .home-phrase {
+  font-size: 40px;
+  font-family: helvetica, arial;
+  font-weight: bold;
+}
+.home .home-description {
+  margin-top: 20px;
+}
+
+.home .home-figure img {
+  width: 400px;
+}
+.home .home-container {
+  display: flex;
+}
+.home .home-container .description-product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
 }
