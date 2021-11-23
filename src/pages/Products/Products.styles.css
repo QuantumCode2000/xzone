@@ -1,0 +1,8 @@
+.product-container .card-product {
+  display: flex;
+  justify-content: space-around;
+}
+
+.product-container .card-product li {
+  list-style: none;
+}

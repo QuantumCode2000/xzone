@@ -5,7 +5,7 @@ const MianLayout = ({ children }) => {
   return (
     <div>
       <Header />
-      {children}
+      <div className="children-main">{children}</div>
       <Footer />
     </div>
   );

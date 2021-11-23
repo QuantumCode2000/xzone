@@ -10,15 +10,17 @@ const Header = () => {
       <ul className="logo">LOGO</ul>
       <ul className="link-pages">
         <li>
-          <Link to="/">HOME</Link>
+          <Link to="/home">HOME</Link>
         </li>
 
         <li>
           <Link to="/product">PRODUCTO</Link>
         </li>
-
         <li>
           <Link to="/contact">CONTACT</Link>
+        </li>
+        <li>
+          <Link to="/product">LOGIN</Link>
         </li>
         <li>
           <Link to="/cart">
