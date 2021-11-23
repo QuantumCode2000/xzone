@@ -1,3 +1,8 @@
+.product-container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 .product-container .card-product {
   display: flex;
   justify-content: space-around;

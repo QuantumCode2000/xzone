@@ -1,9 +1,7 @@
 import React, { createContext, useState } from "react";
 
-//Creamos el contexto
 const StoreContext = createContext();
 
-//Provider
 const StoreProvider = ({ children }) => {
   const list = [
     {
@@ -27,21 +25,17 @@ const StoreProvider = ({ children }) => {
       price: 320,
     },
   ];
-
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
-
   //Funciones
   const handleAddToCart = (item) => {
     setCart([...cart, item]);
     setTotal(total + item.price);
   };
-
   const handleRemoveToCart = (product) => {
     setCart(cart.filter((item) => item.id !== product.id));
     setTotal(total - product.price);
   };
-
   const data = {
     cart,
     total,
@@ -49,9 +43,7 @@ const StoreProvider = ({ children }) => {
     handleAddToCart,
     handleRemoveToCart,
   };
-
   return <StoreContext.Provider value={data}>{children}</StoreContext.Provider>;
 };
-
 export default StoreContext;
 export { StoreProvider };

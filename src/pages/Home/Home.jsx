@@ -1,5 +1,6 @@
 import React from "react";
 // Images
+import { Button } from "react-bootstrap";
 import funko1 from "../../images/funko.jpg";
 import "./Home.styles.css";
 const Home = () => {
@@ -27,7 +28,7 @@ const Home = () => {
             Repudiandae neque dicta reiciendis dolorem dolor aliquid expedita
             corporis doloribus quod cupiditate.
           </p>
-          <button>Show Now</button>
+          <Button>Show Now</Button>
         </div>
       </div>
     </div>
