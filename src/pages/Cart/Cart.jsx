@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 
 //Context
 import StoreContext from "../../context/StoreContext";
-
+import { Button } from "react-bootstrap";
 const Cart = () => {
   const { cart, handleRemoveToCart } = useContext(StoreContext);
 
@@ -13,7 +13,9 @@ const Cart = () => {
         <div key={item.id} className="mt-10">
           <p>{item.name}</p>
           <p>{item.price}</p>
-          <button onClick={() => handleRemoveToCart(item)}>Eliminar</button>
+          <Button variant="danger" onClick={() => handleRemoveToCart(item)}>
+            Eliminar
+          </Button>
         </div>
       ))}
     </div>

@@ -1,14 +1,14 @@
 .footer {
   display: flex;
   flex-direction: row;
-  height: 150px;
+  height: 200px;
   background-color: #191a19;
   align-items: center;
   color: #d8e9a8;
   justify-content: space-between;
   flex-direction: column;
   padding: 0 20px;
-  padding-bottom: 10px;
+  /* padding-bottom: 10px; */
 }
 .footer .footer-container {
   display: flex;
