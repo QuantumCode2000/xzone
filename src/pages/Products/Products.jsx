@@ -4,7 +4,7 @@ import StoreContext from "../../context/StoreContext";
 import CardProduct from "../../components/CardProduct";
 import imageP from "../../images/funko.jpg";
 import "./Products.styles.css";
-import { Button } from "react-bootstrap";
+// import { Button } from "react-bootstrap";
 const Products = () => {
   const { list, handleAddToCart } = useContext(StoreContext);
   return (
