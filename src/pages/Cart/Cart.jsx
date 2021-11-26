@@ -1,48 +1,50 @@
-import React, { useContext } from "react";
-
+import React, { useEffect, useContext } from "react";
+import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 //Context
 import StoreContext from "../../context/StoreContext";
-import { Button } from "react-bootstrap";
+import ListCart from "../../components/ListCart/ListCart";
 const Cart = () => {
-  const { cart, total, handleRemoveToCart } = useContext(StoreContext);
+  const {
+    state,
+    // handleRemoveToCart,
+    handleAddCount,
+    // handleRemoveOneToCart,
+    repeat,
+    dispatch,
+  } = useContext(StoreContext);
+  console.log("cart", repeat);
 
+  useEffect(() => {
+    handleAddCount();
+    // eslint-disable-next-line
+  }, [state.cart]);
   return (
     <div>
       <h3 className="mt-10">Carrito de compras</h3>
-      {/* {cart.map((item) => (
-        <div key={item.id} className="mt-10">
-          <p>{item.name}</p>
-          <p>{item.price}</p>
-          <Button variant="danger" onClick={() => handleRemoveToCart(item)}>
-            Eliminar
-          </Button>
-        </div>
-      ))} */}
       <ul className="list-group mb-3">
-        {cart.map((item) => (
-          <li
+        {repeat?.map((item) => (
+          <ListCart
             key={item.id}
-            class="list-group-item d-flex justify-content-between lh-condensed"
-          >
-            <div>
-              <h6 class="my-0">{item.name}</h6>
-              <small class="text-muted">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt,
-                saepe?
-              </small>
-              <Button variant="danger" onClick={() => handleRemoveToCart(item)}>
-                Eliminar
-              </Button>
-            </div>
-
-            <span class="text-muted">Bs {item.price}</span>
-          </li>
+            id={item.id}
+            name={item.title}
+            description={item.description}
+            item={item}
+            count={item.count}
+            price={item.price}
+            // handleRemoveToCart={handleRemoveToCart}
+            dispatch={dispatch}
+            // handleRemoveOneToCart={handleRemoveOneToCart}
+          />
         ))}
-        <li class="list-group-item d-flex justify-content-between">
+        <li className="list-group-item d-flex justify-content-between">
           <span>Total (Bs)</span>
-          <strong>{total}</strong>
+          <strong>{state.total}</strong>
         </li>
       </ul>
+      <Link to="/checkout">
+        <Button>Checkout</Button>
+      </Link>
     </div>
   );
 };

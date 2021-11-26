@@ -1,6 +1,9 @@
 import React from "react";
 import "./Checkout.styles.css";
+import { useContext } from "react";
+import StoreContext from "../../context/StoreContext";
 const Checkout = () => {
+  const { repeat, total } = useContext(StoreContext);
   return (
     <div className="maincontainer">
       <div class="container">
@@ -11,37 +14,22 @@ const Checkout = () => {
               <span class="badge badge-secondary badge-pill">3</span>
             </h4>
             <ul class="list-group mb-3">
-              <li class="list-group-item d-flex justify-content-between lh-condensed">
-                <div>
-                  <h6 class="my-0">Product name</h6>
-                  <small class="text-muted">Brief description</small>
-                </div>
-                <span class="text-muted">$12</span>
-              </li>
-              <li class="list-group-item d-flex justify-content-between lh-condensed">
-                <div>
-                  <h6 class="my-0">Second product</h6>
-                  <small class="text-muted">Brief description</small>
-                </div>
-                <span class="text-muted">$8</span>
-              </li>
-              <li class="list-group-item d-flex justify-content-between lh-condensed">
-                <div>
-                  <h6 class="my-0">Third item</h6>
-                  <small class="text-muted">Brief description</small>
-                </div>
-                <span class="text-muted">$5</span>
-              </li>
-              <li class="list-group-item d-flex justify-content-between bg-light">
-                <div class="text-success">
-                  <h6 class="my-0">Promo code</h6>
-                  <small>EXAMPLECODE</small>
-                </div>
-                <span class="text-success">-$5</span>
-              </li>
+              {repeat?.map((item) => (
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                  <div>
+                    <h6 class="my-0">{item.title}</h6>
+                    <small class="text-muted">{item.description}</small>
+                  </div>
+                  <div>
+                    <span class="text-muted">{item.price}</span>
+                    <br />
+                    <small class="text-muted">{item.count} prod.</small>
+                  </div>
+                </li>
+              ))}
               <li class="list-group-item d-flex justify-content-between">
-                <span>Total (USD)</span>
-                <strong>$20</strong>
+                <span>Total (Bs)</span>
+                <strong>${total}</strong>
               </li>
             </ul>
             <form class="card p-2">

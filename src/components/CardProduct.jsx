@@ -7,24 +7,50 @@ const CardProduct = ({
   img,
   description,
   item,
-  handleAddToCart,
+  dispatch,
+  width,
 }) => {
   return (
-    <Card style={{ width: "18rem" }}>
-      <Card.Img variant="top" src={img} />
-      <Card.Body>
-        <Card.Title>{name}</Card.Title>
-        <Card.Text>BS {price}</Card.Text>
-        <Button
-          onClick={() => {
-            handleAddToCart(item);
-          }}
-          variant="primary"
-        >
-          Go somewhere
-        </Button>
-      </Card.Body>
-    </Card>
+    <div className="col-sm">
+      {width <= 500 ? (
+        <>
+          <div className="container-card-product">
+            <Card.Img variant="top" src={img} />
+            <Card.Body>
+              <Card.Title>{name}</Card.Title>
+              <Card.Text>BS {price}</Card.Text>
+              <Button
+                onClick={() => {
+                  dispatch({
+                    type: "ADD_TO_CART",
+                    payload: { ...item },
+                  });
+                }}
+                variant="primary"
+              >
+                Add to Cart
+              </Button>
+            </Card.Body>
+          </div>
+        </>
+      ) : (
+        <Card style={{ width: "18rem" }}>
+          <Card.Img variant="top" src={img} />
+          <Card.Body>
+            <Card.Title>{name}</Card.Title>
+            <Card.Text>BS {price}</Card.Text>
+            <Button
+              onClick={() => {
+                dispatch({ type: "ADD_TO_CART", payload: { ...item } });
+              }}
+              variant="primary"
+            >
+              Add to Cart
+            </Button>
+          </Card.Body>
+        </Card>
+      )}
+    </div>
   );
 };
 
