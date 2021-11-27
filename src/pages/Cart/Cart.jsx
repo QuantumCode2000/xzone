@@ -5,25 +5,17 @@ import { Link } from "react-router-dom";
 import StoreContext from "../../context/StoreContext";
 import ListCart from "../../components/ListCart/ListCart";
 const Cart = () => {
-  const {
-    state,
-    // handleRemoveToCart,
-    handleAddCount,
-    // handleRemoveOneToCart,
-    repeat,
-    dispatch,
-  } = useContext(StoreContext);
-  console.log("cart", repeat);
+  const { state, dispatch } = useContext(StoreContext);
 
-  useEffect(() => {
-    handleAddCount();
-    // eslint-disable-next-line
-  }, [state.cart]);
+  // useEffect(() => {
+  //   handleAddCount();
+  //   // eslint-disable-next-line
+  // }, [state.cart]);
   return (
     <div>
       <h3 className="mt-10">Carrito de compras</h3>
       <ul className="list-group mb-3">
-        {repeat?.map((item) => (
+        {state?.cart?.map((item) => (
           <ListCart
             key={item.id}
             id={item.id}

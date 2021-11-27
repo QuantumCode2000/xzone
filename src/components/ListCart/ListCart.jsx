@@ -21,7 +21,17 @@ const ListCart = ({ id, name, price, count, item, dispatch, description }) => {
           </Button>
         </div>
         <span className="text-muted">Bs {price}</span>
-        <Button variant="info">+</Button>
+        <Button
+          variant="info"
+          onClick={() => {
+            dispatch({
+              type: "ADD_TO_CART",
+              payload: { ...item },
+            });
+          }}
+        >
+          +
+        </Button>
         <span className="text-muted">Cant. {count}</span>
         <Button variant="info">-</Button>
       </li>
