@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 //Context
@@ -7,10 +7,6 @@ import ListCart from "../../components/ListCart/ListCart";
 const Cart = () => {
   const { state, dispatch } = useContext(StoreContext);
 
-  // useEffect(() => {
-  //   handleAddCount();
-  //   // eslint-disable-next-line
-  // }, [state.cart]);
   return (
     <div>
       <h3 className="mt-10">Carrito de compras</h3>
@@ -31,12 +27,19 @@ const Cart = () => {
         ))}
         <li className="list-group-item d-flex justify-content-between">
           <span>Total (Bs)</span>
-          <strong>{state.total}</strong>
+          <strong>{state.total.toFixed(2)}</strong>
         </li>
+        <Link to="/checkout">
+          <Button>Checkout</Button>
+        </Link>
+
+        <Button
+          variant="danger"
+          onClick={() => dispatch({ type: "CLEAR_CART" })}
+        >
+          Clear Cart
+        </Button>
       </ul>
-      <Link to="/checkout">
-        <Button>Checkout</Button>
-      </Link>
     </div>
   );
 };

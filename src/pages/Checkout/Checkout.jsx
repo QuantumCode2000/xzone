@@ -3,7 +3,7 @@ import "./Checkout.styles.css";
 import { useContext } from "react";
 import StoreContext from "../../context/StoreContext";
 const Checkout = () => {
-  const { repeat, total } = useContext(StoreContext);
+  const { state } = useContext(StoreContext);
   return (
     <div className="maincontainer">
       <div class="container">
@@ -14,7 +14,7 @@ const Checkout = () => {
               <span class="badge badge-secondary badge-pill">3</span>
             </h4>
             <ul class="list-group mb-3">
-              {repeat?.map((item) => (
+              {state?.cart?.map((item) => (
                 <li class="list-group-item d-flex justify-content-between lh-condensed">
                   <div>
                     <h6 class="my-0">{item.title}</h6>
@@ -29,7 +29,7 @@ const Checkout = () => {
               ))}
               <li class="list-group-item d-flex justify-content-between">
                 <span>Total (Bs)</span>
-                <strong>${total}</strong>
+                <strong>${state.total.toFixed(2)}</strong>
               </li>
             </ul>
             <form class="card p-2">

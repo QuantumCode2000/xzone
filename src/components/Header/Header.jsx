@@ -45,10 +45,15 @@ const Header = () => {
           </li>
           <li>
             <Link to="/cart">
-              <BsCart /> {state.cart.length}
+              <BsCart />{" "}
+              {state?.cart?.length === 0
+                ? 0
+                : state?.cart?.reduce(function (a, b) {
+                    return { count: a.count + b.count };
+                  }).count}
             </Link>
             <br />
-            {state.total}
+            {state.total.toFixed(2)}
           </li>
         </ul>
       )}

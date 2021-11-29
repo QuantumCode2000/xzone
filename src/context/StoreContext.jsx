@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useEffect } from "react";
 import useWindowDimensions from "../customHooks/useWindowDimensions";
 import { useReducer } from "react";
 const StoreContext = createContext();
@@ -51,7 +51,7 @@ const reducer = (state, action) => {
         ? {
             ...state,
             cart: state.cart.map((item) =>
-              item.id === action.payload
+              item.id === action.payload.id
                 ? { ...item, count: item.count - 1 }
                 : item,
             ),
@@ -60,17 +60,18 @@ const reducer = (state, action) => {
         : {
             ...state,
             cart: state.cart.filter((item) => item.id !== action.payload.id),
-            total: state.total - action.payload.price * action.payload.count,
+            total: state.total - action.payload.price,
           };
     }
 
+    case "CLEAR_CART":
+      return initialState;
     default:
       return state;
   }
 };
 
 const StoreProvider = ({ children }) => {
-  // const [repeat, setRepeat] = useState([]);
   const { width } = useWindowDimensions();
   const [state, dispatch] = useReducer(reducer, initialState);
   const getData = async () => {
@@ -82,28 +83,9 @@ const StoreProvider = ({ children }) => {
     getData();
   }, []);
 
-  // const handleRemoveOneToCart = (product) => {
-  //   if (product.count === 1) {
-  //     setCart(cart.filter((item) => item.id !== product.id));
-  //   } else {
-  //     setRepeat(
-  //       repeat.map((item) =>
-  //         item.id === product.id ? { ...item, count: item.count - 1 } : item,
-  //       ),
-  //     );
-  //   }
-  //   setTotal(total - product.price);
-  // };
-
   const data = {
-    // cart,
-    // total,
-
     width,
     state,
-    // handleAddToCart,
-    // handleRemoveToCart,
-    // handleRemoveOneToCart,
     dispatch,
   };
   return <StoreContext.Provider value={data}>{children}</StoreContext.Provider>;

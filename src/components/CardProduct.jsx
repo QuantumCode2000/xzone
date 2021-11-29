@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Card } from "react-bootstrap";
+import "./CardProduct.styles.css";
 const CardProduct = ({
   id,
   name,
