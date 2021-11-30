@@ -7,3 +7,15 @@
   align-items: center;
   flex-direction: column;
 }
+
+.container-cart {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.container-buttons-login {
+  display: flex;
+  justify-content: space-between;
+}

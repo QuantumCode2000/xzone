@@ -3,9 +3,14 @@ import "./Header.styles.css";
 import { BsCart } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import StoreContext from "../../context/StoreContext";
+import UserContext from "../../context/UserContext";
+
 import { Dropdown, DropdownButton } from "react-bootstrap";
+let zero = 0;
+
 const Header = () => {
   const { state, width } = useContext(StoreContext);
+  const { active, nivel } = useContext(UserContext);
   return (
     <div className="header">
       <ul className="logo">LOGO</ul>
@@ -27,6 +32,11 @@ const Header = () => {
           <Dropdown.Item>
             <Link to="/cart">CARRIT0 </Link> {state.cart.length}
           </Dropdown.Item>
+          {active ? (
+            <Dropdown.Item>
+              <Link to="/admin">ADMIN </Link>
+            </Dropdown.Item>
+          ) : null}
         </DropdownButton>
       ) : (
         <ul className="link-pages">
@@ -43,6 +53,11 @@ const Header = () => {
           <li>
             <Link to="/login">LOGIN</Link>
           </li>
+          {active && nivel === 1 ? (
+            <li>
+              <Link to="/admin">ADMIN </Link>
+            </li>
+          ) : null}
           <li>
             <Link to="/cart">
               <BsCart />{" "}
@@ -53,7 +68,9 @@ const Header = () => {
                   }).count}
             </Link>
             <br />
-            {state.total.toFixed(2)}
+            {state.total.toFixed(2) < 0.01
+              ? zero.toFixed(2)
+              : state.total.toFixed(2)}
           </li>
         </ul>
       )}

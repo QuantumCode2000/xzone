@@ -2,6 +2,7 @@ import React from "react";
 import "./Checkout.styles.css";
 import { useContext } from "react";
 import StoreContext from "../../context/StoreContext";
+let zero = 0;
 const Checkout = () => {
   const { state } = useContext(StoreContext);
   return (
@@ -29,7 +30,12 @@ const Checkout = () => {
               ))}
               <li class="list-group-item d-flex justify-content-between">
                 <span>Total (Bs)</span>
-                <strong>${state.total.toFixed(2)}</strong>
+                <strong>
+                  ${" "}
+                  {state.total.toFixed(2) < 0.01
+                    ? zero.toFixed(2)
+                    : state.total.toFixed(2)}
+                </strong>
               </li>
             </ul>
             <form class="card p-2">

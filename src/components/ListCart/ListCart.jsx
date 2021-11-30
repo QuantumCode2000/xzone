@@ -42,7 +42,6 @@ const ListCart = ({ id, name, price, count, item, dispatch, description }) => {
           -
         </Button>
       </li>
-      Hola
     </div>
   );
 };
